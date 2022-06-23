@@ -4,9 +4,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Author Name",
-            "email": "author@email.com",
-            "homepage": "http://author.com"
+            "name": "Narayan Adhikary",
+            "email": "wovosoft@gmail.com"
         }
     ],
     "homepage": "https://github.com/wovosoft/laravel-common",
