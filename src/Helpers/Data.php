@@ -41,7 +41,7 @@ class Data
             ->when($request->input("filter"), fn(Builder $builder, string $filter) => $builder->search($filter))
             ->paginate(
                 perPage: $request->input("per_page") ?: 15,
-                page: $request->input("current_page") ?: 1
+                page: $request->input("current_page") ?: $request->input("page")?: 1
             );
     }
 
