@@ -9,6 +9,7 @@ class Messages
     public static function success(array $merge = []): JsonResponse
     {
         return response()->json(array_merge([
+            "variant"=>"primary",
             "message" => "Successfully Done"
         ], $merge));
     }
@@ -17,6 +18,7 @@ class Messages
     {
         if (app()->environment("development")) {
             return response()->json(array_merge([
+                "variant"=>"danger",
                 "message" => $throwable->getMessage(),
                 "file" => $throwable->getFile(),
                 "line" => $throwable->getLine()
