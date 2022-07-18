@@ -28,7 +28,9 @@ class Data
             $data = $request->validate($model->rules());
             $model->forceFill($data)->saveOrFail();
             DB::commit();
-            return Messages::success();
+            return Messages::success([
+                "insert_id" => $model->id
+            ]);
         } catch (\Throwable $exception) {
             DB::rollBack();
             return Messages::failed($exception);
@@ -54,7 +56,9 @@ class Data
         try {
             $model->deleteOrFail();
             DB::commit();
-            return Messages::success();
+            return Messages::success([
+                "destroy_id" => $model->id
+            ]);
         } catch (\Throwable $exception) {
             DB::rollBack();
             return Messages::failed($exception);
