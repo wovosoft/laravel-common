@@ -81,4 +81,9 @@ class Data
             ->select($request->input("cols") ?: ['*'])
             ->get();
     }
+
+    public static function single(Builder|Model $builder, Request $request): Model|Builder
+    {
+        return $builder;
+    }
 }
