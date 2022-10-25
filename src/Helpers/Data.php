@@ -77,8 +77,14 @@ class Data
      */
     public static function options(Builder $builder, Request $request): Collection|array
     {
+        //for laravel scout
+        if (method_exists($builder->getModel(), 'bootSearchable') && $request->input("filter")) {
+            return get_class($builder->getModel())::search($request->input("filter"))->get();
+        }
+
+
         return $builder
-            ->when($request->input("filter"), fn(Builder $query, string $filter) => $query->getModel()->search($filter))
+//            ->when($request->input("filter"), fn(Builder $query, string $filter) => $query->getModel()->search($filter))
             ->when(!$request->input("all"), function (Builder $query) use ($request) {
                 $query->limit($request->input("limit") ?: 25);
             })
