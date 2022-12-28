@@ -34,7 +34,6 @@ class CsvToCollection
 
         fclose($file_to_read);
 
-
         return $rows;
     }
 }
