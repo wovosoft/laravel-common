@@ -1,6 +1,6 @@
 {
     "name": "wovosoft/laravel-common",
-    "description": ":package_description",
+    "description": "Common Utility features for packages developed by wovosoft",
     "license": "MIT",
     "authors": [
         {
@@ -9,14 +9,10 @@
         }
     ],
     "homepage": "https://github.com/wovosoft/laravel-common",
-    "keywords": ["Laravel", "LaravelCommon"],
-    "require": {
-        "illuminate/support": "~9"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~9.0",
-        "orchestra/testbench": "~7"
-    },
+    "keywords": [
+        "Laravel",
+        "LaravelCommon"
+    ],
     "autoload": {
         "psr-4": {
             "Wovosoft\\LaravelCommon\\": "src/"
