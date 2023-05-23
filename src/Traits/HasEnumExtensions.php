@@ -4,6 +4,9 @@ namespace Wovosoft\LaravelCommon\Traits;
 
 trait HasEnumExtensions
 {
+    /**
+     * Access values by name using magic methods
+     */
     public static function __callStatic(string $name, array $arguments)
     {
         if (!method_exists(__CLASS__, $name)) {
@@ -38,19 +41,19 @@ trait HasEnumExtensions
         return array_merge(...array_map(fn($op) => [$op->name => $op->value], self::cases()));
     }
 
-    public static function toJson(): bool|string
+    public static function toJson(int $flags = 0, int $depth = 512): bool|string
     {
-        return json_encode(static::toArray());
+        return json_encode(static::toArray(), $flags, $depth);
     }
 
     public static function values(): array
     {
-        return array_map(fn($op) => $op->value, self::cases());
+        return array_column(self::cases(), 'value');
     }
 
     public static function keys(): array
     {
-        return array_map(fn($op) => $op->name, self::cases());
+        return array_column(self::cases(), 'name');
     }
 
     private static function flat(): array
