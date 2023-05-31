@@ -26,7 +26,7 @@ trait HasEnumExtensions
     public static function toOptions(bool $asJson = false): array|bool|string
     {
         $records = array_map(fn($op) => [
-            "text" => str($op->name)->headline()->value(),
+            "text" => str($op->name)->title()->replace('_',' ')->value(),
             "value" => $op->value
         ], self::cases());
 
