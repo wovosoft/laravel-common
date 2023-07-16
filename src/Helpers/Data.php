@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Wovosoft\BdHrmProfile\Interfaces\HasRulesInterface;
 
 
 class Data
@@ -24,7 +23,6 @@ class Data
     {
         DB::beginTransaction();
         try {
-            /* @var $model HasRulesInterface */
             $data = $request->validate($model->rules());
             $model->forceFill($data)->saveOrFail();
             DB::commit();
